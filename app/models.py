@@ -37,18 +37,18 @@ class bookstore(db.Model):
     author       = db.Column(db.String() , nullable    = False)
     date         = db.Column(db.String()   , nullable    = False) 
     description  = db.Column(db.String() , nullable    = False)
-    picture      = db.Column(db.String() , nullable    = True, default = 'default.png')
+    picture      = db.Column(db.String() , nullable    = True, default = 'index.jpg')
     trade_price  = db.Column(db.BIGINT() , nullable    = False)
     retail_price = db.Column(db.BIGINT() , nullable    = False)
     quantity     = db.Column(db.BIGINT() , nullable    = False)
 
-    def __init__(self,isbn :int,name :str,author:str,date:str,description:str,picture:str,trade_price:int,retail_price:int,quantity:int) -> None:
+    def __init__(self,isbn :int,name :str,author:str,date:str,description:str,trade_price:int,retail_price:int,quantity:int) -> None:
         self.isbn = isbn
         self.name = name
         self.author = author
         self.date = date
         self.description = description
-        self.picture = picture
+        self.picture = 'index.jpg'
         self.trade_price = trade_price
         self.retail_price = retail_price
         self.quantity = quantity
