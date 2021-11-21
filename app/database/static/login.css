@@ -1,0 +1,127 @@
+:root {
+    --three-dimensions-card-left-side-width: 1rem;
+}
+
+.three-dimensions-card {
+    position: relative;
+}
+
+.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{
+    font-family: Arial, 
+    Helvetica, sans-serif; color: black
+}.bootstrap-iso form button, .bootstrap-iso form button:hover{
+    color: white !important;
+} .asteriskField{
+    color: red;
+}
+
+.slidecontainer {
+    width: 100%;
+  }
+  
+  .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .slider:hover {
+    opacity: 1;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+  }
+.container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    /* Content is centered horizontally */
+    align-items: center;
+    display: flex;
+
+    /* Size */
+    height: 32px;
+}
+
+.container__left {
+    height: 2px;
+
+    /* Colors */
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.container__circle {
+    /* Size */
+    height: 32px;
+    width: 32px;
+
+    /* Rounded border */
+    border-radius: 9999px;
+
+    /* Colors */
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.container__right {
+    /* Take the remaining width */
+    flex: 1;
+    height: 2px;
+
+    /* Colors */
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* The left side */
+.three-dimensions-card::before {
+    background: rgba(117, 4, 4, 0.3);
+    content: '';
+
+    /* Position */
+    top: var(--three-dimensions-card-left-side-width);
+    left: 0px;
+    position: absolute;
+    transform: translate(-100%, 0) skewY(-45deg);
+    transform-origin: left top;
+
+    /* Size */
+    height: 100%;
+    width: var(--three-dimensions-card-left-side-width);
+}
+
+/* The bottom side */
+.three-dimensions-card::after {
+    background: rgba(160, 16, 16, 0.3);
+    content: '';
+
+    /* Position */
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+    transform: translate(0, 100%) skewX(-45deg);
+    transform-origin: left top;
+
+    /* Size */
+    height: var(--three-dimensions-card-left-side-width);
+    width: 100%;
+}
