@@ -1,12 +1,17 @@
-from flask import Blueprint, render_template, request, redirect
+from flask import Blueprint, render_template, request, redirect, session
 from app.models import bookstore, db
+from app import app
 
 bookStoreRoutes = Blueprint('bookStoreRoutes', __name__)
+
+@bookStoreRoutes.route('/createCart')
+def initCart():
+    session['cart'] = 0
+    return str(session['cart'])
 
 @bookStoreRoutes.route('/addStock', methods=['GET','POST'])
 def addStock():
     if request.method == "POST":
-    
         newStockRequest = bookstore(
             request.form["isbn"],
             request.form["name"],
@@ -19,16 +24,15 @@ def addStock():
             )
         db.session.add(newStockRequest)
         db.session.commit()
-        return redirect('/checkStock')
+        return redirect('/')
     else:
         return render_template("bookstore/newStock.html")
 
-
-@bookStoreRoutes.route('/', methods=["GET","POST", "DELETE"])
+@bookStoreRoutes.route('/', methods=["GET","POST"])
 def checkStock():
     if request.method == "GET":
         stockQuery = bookstore.query.all()
-        return render_template('bookstore/checkStock.html', stock_iter = stockQuery)
+        return render_template('bookstore/checkStock.html', stock_iter = stockQuery, cart= session['cart'])
 
 @bookStoreRoutes.route('/delete/<int:id>')
 def deleteRecords(id):
@@ -36,3 +40,20 @@ def deleteRecords(id):
     db.session.delete(deletationVar)
     db.session.commit()
     return redirect('/')
+
+@bookStoreRoutes.route('/addToCart/<int:id>',methods=["GET","POST"])
+def addToCart(id):
+    
+    deletationVar = bookstore.query.filter_by(isbn=id).first() 
+    if deletationVar.quantity<1:
+        pass
+    else:
+        deletationVar.quantity -= 1
+        session['cart'] += 1
+    db.session.commit()
+    return redirect('/')
+
+@bookStoreRoutes.route('/checkout')
+def checkout():
+    
+    return render_template('bookstore/checkout.html')
