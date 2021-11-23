@@ -8,22 +8,21 @@
     </head>
     <body style="background-color: #f4b41a;">
         
-        <div class="card" style=" height: 45vh; margin-left: 25%; margin-right: 25%; margin-top: 20px; text-align: center; width: 50%;">
-            {% for cart in addToCart%}
-            <a href='/'>
-                <img style=" float:left; padding-top: 12px; padding-left: 12px; width: 45px" src="/static/back.svg">
-            </a>
+        <div class="card" style=" height: 55vh; margin-left: 25%; margin-right: 25%; margin-top: 20px; text-align: center; width: 50%;">
+            
             <div style='margin-top: 10vh;' class="card-body">
-                <h4 class="card-title">Name: {{cart.name}}</h4>
-                <p class="card-text">ISBN: {{cart.isbn}}</p>
-                <p class="card-text">Quantity: {{cart.quantity}}</p>
+                <h1>Your Total Is:</h1>
+                <h3>£{{ price1 }}</h3>
+                <h3> Shipping Fee's: £1 </h3>
+                <br>
+                <h1>Your Total is: <u>£{{ price2 }}</u></h1>
             </div>
-            {% endfor %}
+            
+            <a href='/reinitialise' >
+                <button class='btn-outline-success' style='width:25vw; margin-bottom: 66px; '>
+                    <h2> Checkout </h2>
+                </button>
+            </a>
         </div>
-        <a href='addToCart' style='margin-left: 25vw; margin-top: 20vh; width:33vw;'>
-            <button class='btn-outline-success' style='width:50vw; margin-top: 20vh;'>
-                <img style='width:50px; height: 50px;' src="/static/add-to-cart.png">
-            </button>
-        </a>
     </body>
 </html>

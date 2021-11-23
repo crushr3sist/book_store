@@ -4,10 +4,10 @@ from app import app
 
 bookStoreRoutes = Blueprint('bookStoreRoutes', __name__)
 
-@bookStoreRoutes.route('/createCart')
+@bookStoreRoutes.route('/reinitialise')
 def initCart():
     session['cart'] = 0
-    return str(session['cart'])
+    return redirect('/')
 
 @bookStoreRoutes.route('/addStock', methods=['GET','POST'])
 def addStock():
@@ -30,6 +30,7 @@ def addStock():
 
 @bookStoreRoutes.route('/', methods=["GET","POST"])
 def checkStock():
+
     if request.method == "GET":
         stockQuery = bookstore.query.all()
         return render_template('bookstore/checkStock.html', stock_iter = stockQuery, cart= session['cart'])
@@ -55,5 +56,6 @@ def addToCart(id):
 
 @bookStoreRoutes.route('/checkout')
 def checkout():
+    price1 = str(int(session['cart']) * 3 + 1)
     
-    return render_template('bookstore/checkout.html')
+    return render_template('bookstore/checkout.html', price1 = price1, price2 = int(price1)+1)
