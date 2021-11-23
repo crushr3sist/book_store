@@ -18,9 +18,3 @@ def login():
 #         pass
 #     if request.method =="GET":
 #         return render_template()
-
-
-@auth.route('/')
-@login_required
-def index():
-    pass

@@ -24,12 +24,15 @@ def addStock():
         return render_template("bookstore/newStock.html")
 
 
-@bookStoreRoutes.route('/checkStock', methods=["GET","POST", "DELETE"])
+@bookStoreRoutes.route('/', methods=["GET","POST", "DELETE"])
 def checkStock():
-    # if request.method == "POST":
-    #     pass
-    # if request.method == "DELETE":
-    #     pass
     if request.method == "GET":
         stockQuery = bookstore.query.all()
         return render_template('bookstore/checkStock.html', stock_iter = stockQuery)
+
+@bookStoreRoutes.route('/delete/<int:id>')
+def deleteRecords(id):
+    deletationVar = bookstore.query.filter_by(isbn=id).first()
+    db.session.delete(deletationVar)
+    db.session.commit()
+    return redirect('/')

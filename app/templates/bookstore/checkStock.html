@@ -7,18 +7,17 @@
         <title>stock</title>
     </head>
     <body style="background-color: #D291BC;">
-        <a href='/addStock'><button method='GET' style=' font-size: 25px; margin-top: 10%; margin-left: 25%; margin-right: 50%; width: 50%; background: #76C48E;' type="button" class="btn ">Create</button></a>>
-        {% for stock in stock_iter %}
-            <div class="card" style="margin-bottom: 20px; margin-left: 25%; margin-right: 25%; margin-top: 20px; text-align: center; width: 50%;">
+
+      <a href='/addStock'><button method='GET' style=' font-size: 25px; margin-top: 10%; margin-left: 25%; margin-right: 50%; width: 50%; background: #76C48E;' type="button" class="btn ">Create</button></a>
+      {% for stock in stock_iter %}
+      <div class="card" style="margin-bottom: 20px; margin-left: 25%; margin-right: 25%; margin-top: 20px; text-align: center; width: 50%;">
+            
+            <a href='/delete/{{ stock.isbn }}'><img style=" float:left; padding-top: 12px; padding-left: 12px; width: 45px" src="static/close.png"></a>
+        
                 <div class="card-body">
-                    <h4 class="card-title">{{stock.name}}</h4>
-                    <h6 class="card-subtitle mb-2 text-muted">{{stock.author}}</h6>
-                    <p class="card-text">{{stock.isbn}}</p>
-                    <p class="card-text">{{stock.date}}</p>
-                    <p class="card-text">{{stock.description}}</p>
-                    <p class="card-text">{{stock.trade_price}}</p>
-                    <p class="card-text">{{stock.retail_price}}</p>
-                    <p class="card-text">{{stock.quantity}}</p>
+                    <h4 class="card-title">Name: {{stock.name}}</h4>
+                    <p class="card-text">ISBN: {{stock.isbn}}</p>
+                    <p class="card-text">Quantity: {{stock.quantity}}</p>
                     <img class="card-img-bottom" style="width: 200px;" src="{{stock.picture}}"></img>
                 </div>
             </div>
