@@ -48,7 +48,7 @@ class bookstore(db.Model):
         self.author = author
         self.date = date
         self.description = description
-        self.picture = 'index.jpg'
+        self.picture = 'static/index.jpg'
         self.trade_price = trade_price
         self.retail_price = retail_price
         self.quantity = quantity

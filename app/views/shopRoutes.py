@@ -24,6 +24,12 @@ def addStock():
         return render_template("bookstore/newStock.html")
 
 
-@bookStoreRoutes.route('/checkStock', methods=['GET','POST'])
+@bookStoreRoutes.route('/checkStock', methods=["GET","POST", "DELETE"])
 def checkStock():
-    return "You posted"
+    # if request.method == "POST":
+    #     pass
+    # if request.method == "DELETE":
+    #     pass
+    if request.method == "GET":
+        stockQuery = bookstore.query.all()
+        return render_template('bookstore/checkStock.html', stock_iter = stockQuery)
