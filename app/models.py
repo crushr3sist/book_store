@@ -11,6 +11,8 @@ class Users(AnonymousUserMixin, UserMixin, db.Model):
     password = db.Column(db.String(), nullable = False)
     name = db.Column(db.String(), nullable = False)
     is_Admin = db.Column(db.Boolean())
+    cart         = db.Column(db.Integer() , nullable   = True)
+
 
     is_authenticated = False
     is_active = False
@@ -41,6 +43,7 @@ class bookstore(db.Model):
     trade_price  = db.Column(db.BIGINT() , nullable    = False)
     retail_price = db.Column(db.BIGINT() , nullable    = False)
     quantity     = db.Column(db.BIGINT() , nullable    = False)
+
 
     def __init__(self,isbn :int,name :str,author:str,date:str,description:str,trade_price:int,retail_price:int,quantity:int) -> None:
         self.isbn = isbn

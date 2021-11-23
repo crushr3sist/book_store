@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <title>stock</title>
+    </head>
+    <body style="background-color: #f4b41a;">
+        
+        <div class="card" style=" height: 45vh; margin-left: 25%; margin-right: 25%; margin-top: 20px; text-align: center; width: 50%;">
+            {% for cart in addToCart%}
+            <a href='/'>
+                <img style=" float:left; padding-top: 12px; padding-left: 12px; width: 45px" src="/static/back.svg">
+            </a>
+            <div style='margin-top: 10vh;' class="card-body">
+                <h4 class="card-title">Name: {{cart.name}}</h4>
+                <p class="card-text">ISBN: {{cart.isbn}}</p>
+                <p class="card-text">Quantity: {{cart.quantity}}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <a href='addToCart' style='margin-left: 25vw; margin-top: 20vh; width:33vw;'>
+            <button class='btn-outline-success' style='width:50vw; margin-top: 20vh;'>
+                <img style='width:50px; height: 50px;' src="/static/add-to-cart.png">
+            </button>
+        </a>
+    </body>
+</html>
