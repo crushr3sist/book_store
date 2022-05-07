@@ -7,14 +7,18 @@ from app.models import bookstore, db
 from app import app
 #importing the app variable
 
-
 bookStoreRoutes = Blueprint('bookStoreRoutes', __name__)
 # creating the bookstore blueprint
 
-@bookStoreRoutes.route('/reinitialise')
-def initCart():
-    session['cart'] = 0
-    return redirect('/')
+# @bookStoreRoutes.route('/reinitialise')
+# def initCart():
+
+#     if (request.method == 'POST'):
+#         session['cart'] = 0
+#         init_flag = True
+#         return redirect('/')
+#     else:
+#         return render_template('bookstore/session.html')
 # the session variable resetter
 
 @bookStoreRoutes.route('/addStock', methods=['GET','POST'])
@@ -48,13 +52,20 @@ def addStock():
         return render_template("bookstore/newStock.html")
     # handing the get request with simply rendering the form template
 
+
 @bookStoreRoutes.route('/', methods=["GET","POST"])
 def checkStock():
     # displays the books available for purchase
+    init_flag = False
     if request.method == "GET":
-        stockQuery = bookstore.query.all()
-        return render_template('bookstore/checkStock.html', stock_iter = stockQuery, cart= session['cart'])
+        if init_flag:
+            stockQuery = bookstore.query.all()
+            return render_template('bookstore/checkStock.html', stock_iter = stockQuery, cart= session['cart'])
         # renders the template with form required to handle functionality with post requests
+        if init_flag == False:
+            session['cart'] = 0
+            init_flag = True
+            return redirect('/')
 
 @bookStoreRoutes.route('/delete/<int:id>')
 # route to handle deleting a book record, implimentation of CRUD functionality 

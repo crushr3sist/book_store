@@ -7,5 +7,5 @@ from app.views.login import login_manager
 # importing the blueprint files 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
 # main file security implimentation
