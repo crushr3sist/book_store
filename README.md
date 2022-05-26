@@ -6,4 +6,8 @@
 ```bat
 py main.py
 
+and
+
+ping localhost:5000/init
+
 ```
