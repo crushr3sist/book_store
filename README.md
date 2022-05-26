@@ -4,4 +4,6 @@
 # quick start
 
 ```py
+py main.py
+
 ```
