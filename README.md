@@ -3,7 +3,7 @@
 
 # quick start
 
-```py
+```bat
 py main.py
 
 ```
