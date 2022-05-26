@@ -3,4 +3,5 @@
 
 # quick start
 
+```py
 ```
